@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import logo from '../assets/gomarathon.png'
 
 const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext);
@@ -15,9 +16,10 @@ const Navbar = () => {
                 {/* Logo */}
                 <div>
                     <Link to={'/'}>
-                        <button className="btn btn-ghost text-xl text-green-400">
-                            Marathon
-                        </button>
+                        <img 
+                        className="w-16 h-12 btn"
+                        src={logo} 
+                        alt="" />
                     </Link>
                 </div>
 
