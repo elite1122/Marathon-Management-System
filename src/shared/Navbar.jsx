@@ -6,7 +6,7 @@ const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext);
 
     if (loading) {
-        return <span className="loading loading-bars loading-lg"></span>;
+        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-bars loading-lg"></span></div>;
     }
 
     return (
@@ -31,7 +31,7 @@ const Navbar = () => {
                     >
                         Home
                     </NavLink>
-                    <span>|</span>
+                    
                     <NavLink
                         to="/marathons"
                         className={({ isActive }) =>
@@ -40,10 +40,9 @@ const Navbar = () => {
                     >
                         Marathons
                     </NavLink>
-                    <span>|</span>
+                    
                     {user && (
                         <>
-                            <span>|</span>
                             <NavLink
                                 to="/dashboard"
                                 className={({ isActive }) =>
@@ -54,7 +53,6 @@ const Navbar = () => {
                             </NavLink>
                         </>
                     )}
-                    <span>|</span>
                 </div>
 
                 {/* User Profile & Conditional Buttons */}
@@ -152,20 +150,20 @@ const Navbar = () => {
                                 Marathons
                             </NavLink>
                         </li>
-                        
+
                         <li>
-                        {user && (
-                            <li>
-                                <NavLink
-                                    to="/dashboard"
-                                    className={({ isActive }) =>
-                                        isActive ? "text-blue-500 font-bold" : ""
-                                    }
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </li>
-                        )}
+                            {user && (
+                                <li>
+                                    <NavLink
+                                        to="/dashboard"
+                                        className={({ isActive }) =>
+                                            isActive ? "text-blue-500 font-bold" : ""
+                                        }
+                                    >
+                                        Dashboard
+                                    </NavLink>
+                                </li>
+                            )}
                         </li>
                         {!user ? (
                             <>
