@@ -9,6 +9,7 @@ import Marathons from "../pages/Marathons";
 import Dashboard from "../pages/Dashboard";
 import AddMarathon from "../pages/InDashboard/AddMarathon";
 import ErrorPage from "../shared/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,15 +31,15 @@ const router = createBrowserRouter([
         },
         {
             path: '/marathons',
-            element: <Marathons></Marathons>
+            element: <PrivateRoute><Marathons></Marathons></PrivateRoute>
         },
         {
             path: '/dashboard',
-            element: <Dashboard></Dashboard>,
+            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
             children: [
                 {
                     path: '/dashboard/addMarathon',
-                    element: <AddMarathon></AddMarathon>
+                    element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
                 }
             ]
         },

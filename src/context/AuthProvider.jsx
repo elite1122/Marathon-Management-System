@@ -19,44 +19,38 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     // Create new user
-    const createNewUser = (email, password, displayName, photoURL) => {
+    const createNewUser = async (email, password, displayName, photoURL) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password).then(
-            async (result) => {
-                const newUser = result.user;
-                // Update the user's profile
-                await updateProfile(newUser, { displayName, photoURL });
-                setUser({ ...newUser, displayName, photoURL }); // Update state manually
-                setLoading(false);
-            }
-        );
+        const result = await createUserWithEmailAndPassword(auth, email, password);
+        const newUser = result.user;
+        // Update the user's profile
+        await updateProfile(newUser, { displayName, photoURL });
+        setUser({ ...newUser, displayName, photoURL }); // Update state manually
+        setLoading(false);
     };
 
     // Login with email and password
-    const userLogin = (email, password) => {
+    const userLogin = async (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password).then((result) => {
-            setUser(result.user); // Update user state manually
-            setLoading(false);
-        });
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        setUser(result.user); // Update user state manually
+        setLoading(false);
     };
 
     // Login with Google
-    const signInWithGoogle = () => {
+    const signInWithGoogle = async () => {
         setLoading(true);
-        return signInWithPopup(auth, googleProvider).then((result) => {
-            setUser(result.user); // Update user state manually
-            setLoading(false);
-        });
+        const result = await signInWithPopup(auth, googleProvider);
+        setUser(result.user); // Update user state manually
+        setLoading(false);
     };
 
     // Logout
-    const logOut = () => {
+    const logOut = async () => {
         setLoading(true);
-        return signOut(auth).then(() => {
-            setUser(null); // Clear user state
-            setLoading(false);
-        });
+        await signOut(auth);
+        setUser(null); // Clear user state
+        setLoading(false);
     };
 
     // Monitor auth state changes
