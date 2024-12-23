@@ -16,10 +16,10 @@ const Navbar = () => {
                 {/* Logo */}
                 <div>
                     <Link to={'/'}>
-                        <img 
-                        className="w-16 h-12 btn"
-                        src={logo} 
-                        alt="" />
+                        <img
+                            className="w-16 h-12 btn"
+                            src={logo}
+                            alt="" />
                     </Link>
                 </div>
 
@@ -33,7 +33,7 @@ const Navbar = () => {
                     >
                         Home
                     </NavLink>
-                    
+
                     <NavLink
                         to="/marathons"
                         className={({ isActive }) =>
@@ -42,7 +42,7 @@ const Navbar = () => {
                     >
                         Marathons
                     </NavLink>
-                    
+
                     {user && (
                         <>
                             <NavLink
@@ -152,21 +152,18 @@ const Navbar = () => {
                                 Marathons
                             </NavLink>
                         </li>
-
-                        <li>
-                            {user && (
-                                <li>
-                                    <NavLink
-                                        to="/dashboard"
-                                        className={({ isActive }) =>
-                                            isActive ? "text-blue-500 font-bold" : ""
-                                        }
-                                    >
-                                        Dashboard
-                                    </NavLink>
-                                </li>
-                            )}
-                        </li>
+                        {user && (
+                            <li>
+                                <NavLink
+                                    to="/dashboard"
+                                    className={({ isActive }) =>
+                                        isActive ? "text-blue-500 font-bold" : ""
+                                    }
+                                >
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                        )}
                         {!user ? (
                             <>
                                 <li>
