@@ -26,24 +26,24 @@ const MarathonsInHome = () => {
                             key={marathon._id}
                             className="card shadow-xl pt-5"
                             data-tooltip-id={`tooltip-${marathon._id}`} // Unique ID for each tooltip
-                            data-tooltip-content={`Registration deadline: ${marathon.EndRegistrationDate}`}
+                            data-tooltip-content={`Registration deadline: ${marathon.endRegistrationDate}`}
                         >
                             <figure className='h-64 px-6'>
                                 <img
-                                    src={marathon.MarathonImage}
-                                    alt={marathon.MarathonTitle}
+                                    src={marathon.marathonImage}
+                                    alt={marathon.marathonTitle}
                                     className="w-full h-full rounded-lg"
                                 />
                             </figure>
                             <div className="card-body">
                                 <h2 className="card-title dark:text-gray-300">{marathon.MarathonTitle}</h2>
-                                <p className="text-sm dark:text-gray-400">{marathon.Location}</p>
+                                <p className="text-sm dark:text-gray-400">{marathon.location}</p>
                                 <div className="flex justify-between items-center mt-4">
                                     <p className="text-secondary">
-                                        Registration Start: {new Date(marathon.StartRegistrationDate).toLocaleDateString()}
+                                        Registration Start: {new Date(marathon.startRegistrationDate).toLocaleDateString()}
                                     </p>
                                     <p className="text-secondary">
-                                        Registration End: {new Date(marathon.EndRegistrationDate).toLocaleDateString()}
+                                        Registration End: {new Date(marathon.endRegistrationDate).toLocaleDateString()}
                                     </p>
                                 </div>
                                 <button

@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Marathons from "../pages/Marathons";
 import Dashboard from "../pages/Dashboard";
+import AddMarathon from "../pages/InDashboard/AddMarathon";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,14 @@ const router = createBrowserRouter([
         },
         {
             path: '/dashboard',
-            element: <Dashboard></Dashboard>
-        }
+            element: <Dashboard></Dashboard>,
+            children: [
+                {
+                    path: '/dashboard/addMarathon',
+                    element: <AddMarathon></AddMarathon>
+                }
+            ]
+        },
     ]
   },
 ]);

@@ -1,111 +1,110 @@
 [
-    {
-      "MarathonTitle": "Great Khulna Marathon",
-      "StartRegistrationDate": "2024-12-22",
-      "EndRegistrationDate": "2025-01-01",
-      "MarathonStartDate": "2025-01-10",
-      "Location": "Khulna, Bangladesh",
-      "RunningDistance": "25k",
-      "Description": "Experience the thrill of running in the heart of the city!",
-      "MarathonImage": "hhttps://i.ibb.co.com/xM6PGbr/Great-khulna-Marathon.png",
+  {
+      "marathonTitle": "Great Khulna Marathon",
+      "startRegistrationDate": "2024-12-22",
+      "endRegistrationDate": "2025-01-01",
+      "marathonStartDate": "2025-01-10",
+      "location": "Khulna, Bangladesh",
+      "runningDistance": "25k",
+      "description": "Experience the thrill of running in the heart of the city!",
+      "marathonImage": "https://i.ibb.co.com/xM6PGbr/Great-khulna-Marathon.png",
       "createdAt": "2024-12-10",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Winter Fun Run",
-      "StartRegistrationDate": "2024-12-18",
-      "EndRegistrationDate": "2025-01-06",
-      "MarathonStartDate": "2025-01-15",
-      "Location": "Dhaka, Bangladesh",
-      "RunningDistance": "10k",
-      "Description": "Run to beat the chill and enjoy the beauty of winter!",
-      "MarathonImage": "https://i.ibb.co.com/gVkjPhM/Great-Dhaka-Marathon.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Winter Fun Run",
+      "startRegistrationDate": "2024-12-18",
+      "endRegistrationDate": "2025-01-06",
+      "marathonStartDate": "2025-01-15",
+      "location": "Dhaka, Bangladesh",
+      "runningDistance": "10k",
+      "description": "Run to beat the chill and enjoy the beauty of winter!",
+      "marathonImage": "https://i.ibb.co.com/gVkjPhM/Great-Dhaka-Marathon.png",
       "createdAt": "2024-12-12",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Winter Morning Run",
-      "StartRegistrationDate": "2024-12-21",
-      "EndRegistrationDate": "2025-01-15",
-      "MarathonStartDate": "2025-01-20",
-      "Location": "Sylhet, Bangladesh",
-      "RunningDistance": "3k",
-      "Description": "Celebrate the colors of spring with this short run!",
-      "MarathonImage": "https://i.ibb.co.com/1XNDw3s/Great-Sylhet-Marathon.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Winter Morning Run",
+      "startRegistrationDate": "2024-12-21",
+      "endRegistrationDate": "2025-01-15",
+      "marathonStartDate": "2025-01-20",
+      "location": "Sylhet, Bangladesh",
+      "runningDistance": "3k",
+      "description": "Celebrate the colors of spring with this short run!",
+      "marathonImage": "https://i.ibb.co.com/1XNDw3s/Great-Sylhet-Marathon.png",
       "createdAt": "2024-12-08",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Charity Run 2025",
-      "StartRegistrationDate": "2024-12-17",
-      "EndRegistrationDate": "2025-01-02",
-      "MarathonStartDate": "2025-01-11",
-      "Location": "Khulna, Bangladesh",
-      "RunningDistance": "10k",
-      "Description": "Run for a cause and make a difference!",
-      "MarathonImage": "https://i.ibb.co.com/4SMBS6v/Great-khulna-Marathon-1.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Charity Run 2025",
+      "startRegistrationDate": "2024-12-17",
+      "endRegistrationDate": "2025-01-02",
+      "marathonStartDate": "2025-01-11",
+      "location": "Khulna, Bangladesh",
+      "runningDistance": "10k",
+      "description": "Run for a cause and make a difference!",
+      "marathonImage": "https://i.ibb.co.com/4SMBS6v/Great-khulna-Marathon-1.png",
       "createdAt": "2024-12-16",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Riverfront Fun Run Marathon",
-      "StartRegistrationDate": "2024-12-20",
-      "EndRegistrationDate": "2024-12-27",
-      "MarathonStartDate": "2025-01-08",
-      "Location": "Rajshahi, Bangladesh",
-      "RunningDistance": "25k",
-      "Description": "Enjoy scenic views along the riverbank as you run!",
-      "MarathonImage": "https://i.ibb.co.com/WyXhQ9K/Great-rajshahi-Marathon.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Riverfront Fun Run Marathon",
+      "startRegistrationDate": "2024-12-20",
+      "endRegistrationDate": "2024-12-27",
+      "marathonStartDate": "2025-01-08",
+      "location": "Rajshahi, Bangladesh",
+      "runningDistance": "25k",
+      "description": "Enjoy scenic views along the riverbank as you run!",
+      "marathonImage": "https://i.ibb.co.com/WyXhQ9K/Great-rajshahi-Marathon.png",
       "createdAt": "2024-12-15",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Beach Run Challenge",
-      "StartRegistrationDate": "2024-12-17",
-      "EndRegistrationDate": "2024-12-29",
-      "MarathonStartDate": "2025-01-16",
-      "Location": "Cox's Bazar, Bangladesh",
-      "RunningDistance": "10k",
-      "Description": "A challenging run on the world's longest beach!",
-      "MarathonImage": "https://i.ibb.co.com/TLcDXwJ/cox-s-bazar.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Beach Run Challenge",
+      "startRegistrationDate": "2024-12-17",
+      "endRegistrationDate": "2024-12-29",
+      "marathonStartDate": "2025-01-16",
+      "location": "Cox's Bazar, Bangladesh",
+      "runningDistance": "10k",
+      "description": "A challenging run on the world's longest beach!",
+      "marathonImage": "https://i.ibb.co.com/TLcDXwJ/cox-s-bazar.png",
       "createdAt": "2024-12-15",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Mountain Dash Charity",
-      "StartRegistrationDate": "2024-12-16",
-      "EndRegistrationDate": "2024-12-27",
-      "MarathonStartDate": "2025-01-13",
-      "Location": "Bandarban, Bangladesh",
-      "RunningDistance": "3k",
-      "Description": "Conquer the hills in this thrilling mountain run!",
-      "MarathonImage": "https://i.ibb.co.com/hFmynrM/bandarban.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Mountain Dash Charity",
+      "startRegistrationDate": "2024-12-16",
+      "endRegistrationDate": "2024-12-27",
+      "marathonStartDate": "2025-01-13",
+      "location": "Bandarban, Bangladesh",
+      "runningDistance": "3k",
+      "description": "Conquer the hills in this thrilling mountain run!",
+      "marathonImage": "https://i.ibb.co.com/hFmynrM/bandarban.png",
       "createdAt": "2024-12-12",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Barishal Charity Run",
-      "StartRegistrationDate": "2024-12-15",
-      "EndRegistrationDate": "2024-12-26",
-      "MarathonStartDate": "2025-01-11",
-      "Location": "Barishal, Bangladesh",
-      "RunningDistance": "25k",
-      "Description": "Run for a cause and make people happy",
-      "MarathonImage": "https://i.ibb.co.com/3RTbgzq/barishal.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Barishal Charity Run",
+      "startRegistrationDate": "2024-12-15",
+      "endRegistrationDate": "2024-12-26",
+      "marathonStartDate": "2025-01-11",
+      "location": "Barishal, Bangladesh",
+      "runningDistance": "25k",
+      "description": "Run for a cause and make people happy",
+      "marathonImage": "https://i.ibb.co.com/3RTbgzq/barishal.png",
       "createdAt": "2024-12-13",
-      "TheTotalRegistrationCount": 0
-    },
-    {
-      "MarathonTitle": "Dhaka Special Marathon",
-      "StartRegistrationDate": "2024-12-16",
-      "EndRegistrationDate": "2024-12-29",
-      "MarathonStartDate": "2025-01-07",
-      "Location": "Dhaka, Bangladesh",
-      "RunningDistance": "10k",
-      "Description": "Celebrate the day with a spirited run!",
-      "MarathonImage": "https://i.ibb.co.com/TL5Tjks/dhaka.png",
+      "totalRegistrationCount": 0
+  },
+  {
+      "marathonTitle": "Dhaka Special Marathon",
+      "startRegistrationDate": "2024-12-16",
+      "endRegistrationDate": "2024-12-29",
+      "marathonStartDate": "2025-01-07",
+      "location": "Dhaka, Bangladesh",
+      "runningDistance": "10k",
+      "description": "Celebrate the day with a spirited run!",
+      "marathonImage": "https://i.ibb.co.com/TL5Tjks/dhaka.png",
       "createdAt": "2024-12-14",
-      "TheTotalRegistrationCount": 0
-    }
-  ]
-  
+      "totalRegistrationCount": 0
+  }
+]
