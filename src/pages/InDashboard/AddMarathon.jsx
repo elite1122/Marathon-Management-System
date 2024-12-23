@@ -12,7 +12,7 @@ const AddMarathon = () => {
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
 
-    const handleAddJob = (e) => {
+    const handleAddMarathon = (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
@@ -55,7 +55,7 @@ const AddMarathon = () => {
     return (
         <div>
             <h2 className="text-3xl font-bold text-center">Create Marathon</h2>
-            <form onSubmit={handleAddJob} className="card-body">
+            <form onSubmit={handleAddMarathon} className="card-body">
                 {/* Marathon Title */}
                 <div className="form-control">
                     <label className="label">

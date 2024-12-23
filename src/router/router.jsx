@@ -8,12 +8,13 @@ import Register from "../pages/Register";
 import Marathons from "../pages/Marathons";
 import Dashboard from "../pages/Dashboard";
 import AddMarathon from "../pages/InDashboard/AddMarathon";
+import ErrorPage from "../shared/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h2>Route Not Found</h2>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             path: '/',
