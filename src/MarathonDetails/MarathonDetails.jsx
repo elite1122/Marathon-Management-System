@@ -66,7 +66,7 @@ const MarathonDetails = () => {
                         <strong>Marathon Start Date: </strong>{new Date(marathonStartDate).toLocaleDateString()}
                     </p>
                     
-                    <Link to={`/marathons/${_id}`}>
+                    <Link to={`/registerMarathon/${_id}`}>
                         <button 
                             onClick={handleRegister} 
                             className={`btn w-full ${isRegistrationOpen ? 'btn-primary' : 'btn-disabled'}`}
