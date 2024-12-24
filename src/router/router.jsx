@@ -11,6 +11,8 @@ import AddMarathon from "../pages/InDashboard/AddMarathon";
 import ErrorPage from "../shared/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import MarathonDetails from "../MarathonDetails/MarathonDetails";
+import MyMarathonList from "../pages/InDashboard/myMarathonList";
+import MyApplyList from "../pages/InDashboard/MyApplyList";
 
 const router = createBrowserRouter([
     {
@@ -46,9 +48,17 @@ const router = createBrowserRouter([
                     {
                         path: '/dashboard/addMarathon',
                         element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/myMarathonList',
+                        element: <PrivateRoute><MyMarathonList></MyMarathonList></PrivateRoute>
+                    },
+                    {
+                        path: '/dashboard/myApplyList',
+                        element: <PrivateRoute><MyApplyList></MyApplyList></PrivateRoute>
                     }
                 ]
-            },
+            }
         ]
     },
 ]);

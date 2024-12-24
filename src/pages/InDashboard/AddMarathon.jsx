@@ -3,9 +3,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
 import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 const AddMarathon = () => {
     const { user } = useAuth();
+    const navigate = useNavigate();
 
     // State variables for the dates
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
@@ -48,6 +50,7 @@ const AddMarathon = () => {
                     setStartRegistrationDate(null);
                     setEndRegistrationDate(null);
                     setMarathonStartDate(null);
+                    navigate('/dashboard/myMarathonList');
                 }
             });
     };

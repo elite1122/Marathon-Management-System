@@ -11,24 +11,25 @@ const MarathonDetails = () => {
         startRegistrationDate,
         endRegistrationDate,
         marathonStartDate,
-        createdAt,
         totalRegistrationCount
     } = useLoaderData();
 
+    const currentDate = new Date(); // Get the current date
+    const startDate = new Date(startRegistrationDate);
+    const endDate = new Date(endRegistrationDate);
+
+    const isRegistrationOpen = currentDate >= startDate && currentDate <= endDate;
+
     const handleRegister = () => {
-
-        // const currentDate = new Date();
-        // const deadlineDate = new Date(deadline);
-
-        // if (currentDate > deadlineDate) {
-        //     Swal.fire({
-        //         title: 'Registration Closed',
-        //         text: 'The deadline for this registration has passed. Registration is no longer accepted.',
-        //         icon: 'error',
-        //         confirmButtonText: 'OK',
-        //     });
-        //     return;
-        // }
+        if (!isRegistrationOpen) {
+            Swal.fire({
+                title: 'Registration Closed',
+                text: 'The registration period for this marathon has ended.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+            return;
+        }
     };
 
     return (
@@ -56,18 +57,22 @@ const MarathonDetails = () => {
                         <strong>Running Distance: </strong>{runningDistance}
                     </p>
                     <p className="text-gray-700 text-lg dark:text-gray-400">
-                        <strong>Start Registration Date: </strong>{startRegistrationDate}
+                        <strong>Start Registration Date: </strong>{new Date(startRegistrationDate).toLocaleDateString()}
                     </p>
                     <p className="text-gray-700 text-lg dark:text-gray-400">
-                        <strong>End Registration Date: </strong>{endRegistrationDate}
+                        <strong>End Registration Date: </strong>{new Date(endRegistrationDate).toLocaleDateString()}
                     </p>
                     <p className="text-gray-700 text-lg pb-4 dark:text-gray-400">
-                        <strong>Marathon Start Date: </strong>{marathonStartDate}
+                        <strong>Marathon Start Date: </strong>{new Date(marathonStartDate).toLocaleDateString()}
                     </p>
                     
                     <Link to={`/marathons/${_id}`}>
-                        <button onClick={handleRegister} className="btn btn-primary w-full">
-                            Registration Link
+                        <button 
+                            onClick={handleRegister} 
+                            className={`btn w-full ${isRegistrationOpen ? 'btn-primary' : 'btn-disabled'}`}
+                            disabled={!isRegistrationOpen}
+                        >
+                            {isRegistrationOpen ? 'Register Now' : 'Registration Closed'}
                         </button>
                     </Link>
                 </div>

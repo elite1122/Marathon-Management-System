@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import AddMarathon from './InDashboard/AddMarathon';
+import MyMarathonList from './InDashboard/myMarathonList';
+import MyApplyList from './InDashboard/MyApplyList';
 
 const Dashboard = () => {
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer drawer-open">
             {/* Drawer container */}
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col p-4">
+            <div className="drawer-content flex flex-col py-4">
                 {/* Page content here */}
-                <AddMarathon></AddMarathon>
-                <Outlet /> {/* To render nested routes */}
+                <Outlet />
             </div>
             <div className="drawer-side">
                 {/* Sidebar */}
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
 
-                <ul className="menu p-4 w-80 bg-base-200 text-base-content">
+                <ul className="menu p-4 w-max bg-base-200 text-base-content">
                     <li>
                         <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
                     </li>
