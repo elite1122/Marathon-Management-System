@@ -1,6 +1,6 @@
 import {
     createBrowserRouter,
-  } from "react-router-dom";
+} from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -10,41 +10,47 @@ import Dashboard from "../pages/Dashboard";
 import AddMarathon from "../pages/InDashboard/AddMarathon";
 import ErrorPage from "../shared/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import MarathonDetails from "../MarathonDetails/MarathonDetails";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout></MainLayout>,
-    errorElement: <ErrorPage></ErrorPage>,
-    children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-            path: '/login',
-            element:<Login></Login>
-        },
-        {
-            path: '/register',
-            element: <Register></Register>
-        },
-        {
-            path: '/marathons',
-            element: <PrivateRoute><Marathons></Marathons></PrivateRoute>
-        },
-        {
-            path: '/dashboard',
-            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-            children: [
-                {
-                    path: '/dashboard/addMarathon',
-                    element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
-                }
-            ]
-        },
-    ]
-  },
+    {
+        path: "/",
+        element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: '/',
+                element: <Home></Home>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/marathons',
+                element: <PrivateRoute><Marathons></Marathons></PrivateRoute>
+            },
+            {
+                path: 'marathons/:id',
+                element: <PrivateRoute><MarathonDetails></MarathonDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/marathons/${params.id}`)
+            },
+            {
+                path: '/dashboard',
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+                children: [
+                    {
+                        path: '/dashboard/addMarathon',
+                        element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
+                    }
+                ]
+            },
+        ]
+    },
 ]);
 
 export default router;
