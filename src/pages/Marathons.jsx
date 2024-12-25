@@ -2,20 +2,37 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Marathons = () => {
-
     const [marathons, setMarathons] = useState([]);
+    const [sortOrder, setSortOrder] = useState('desc'); // Default sort order
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/marathons')
+        fetch(`http://localhost:5000/marathons?sort=${sortOrder}`)
             .then((res) => res.json())
             .then((data) => setMarathons(data))
             .catch((err) => console.error('Error fetching marathons:', err));
-    }, []);
+    }, [sortOrder]); // Re-fetch data when sortOrder changes
+
+    const handleSortChange = (e) => {
+        setSortOrder(e.target.value);
+    };
 
     return (
         <div className="container mx-auto py-10 w-11/12 min-h-screen">
             <h1 className="text-4xl font-bold text-center mb-6">All Marathons</h1>
+
+            {/* Sorting Options */}
+            <div className="flex justify-end mb-4">
+                <select
+                    value={sortOrder}
+                    onChange={handleSortChange}
+                    className="select select-bordered w-max border-blue-400"
+                >
+                    <option value="desc">Newest to Oldest</option>
+                    <option value="asc">Oldest to Newest</option>
+                </select>
+            </div>
+
             {marathons.length === 0 ? (
                 <p className="text-center">No marathons found!</p>
             ) : (
