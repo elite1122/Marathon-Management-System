@@ -43,14 +43,14 @@ const MarathonsInHome = () => {
                                 />
                             </figure>
                             <div className="card-body">
-                                <h2 className="card-title dark:text-gray-300">{marathon.MarathonTitle}</h2>
+                                <h2 className="card-title dark:text-gray-300">{marathon.marathonTitle}</h2>
                                 <p className="text-sm dark:text-gray-400">{marathon.location}</p>
-                                <div className="flex justify-between items-center mt-4">
-                                    <p className="text-secondary">
-                                        Registration Start: {new Date(marathon.startRegistrationDate).toLocaleDateString()}
+                                <div className="space-y-2 mt-4">
+                                    <p className="">
+                                        <strong>Registration Start:</strong> {new Date(marathon.startRegistrationDate).toLocaleDateString()}
                                     </p>
-                                    <p className="text-secondary">
-                                        Registration End: {new Date(marathon.endRegistrationDate).toLocaleDateString()}
+                                    <p className="">
+                                        <strong>Registration End:</strong> {new Date(marathon.endRegistrationDate).toLocaleDateString()}
                                     </p>
                                 </div>
                                 {/* Countdown Timer */}
