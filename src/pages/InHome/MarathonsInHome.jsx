@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 
@@ -13,6 +14,12 @@ const MarathonsInHome = () => {
             .then((data) => setMarathons(data))
             .catch((err) => console.error('Error fetching marathons:', err));
     }, []);
+
+    const calculateRemainingTime = (marathonStartDate) => {
+        const now = new Date();
+        const start = new Date(marathonStartDate);
+        return Math.max((start - now) / 1000, 0); // Return remaining time in seconds
+    };
 
     return (
         <div className="container mx-auto py-10 w-11/12">
@@ -45,6 +52,29 @@ const MarathonsInHome = () => {
                                     <p className="text-secondary">
                                         Registration End: {new Date(marathon.endRegistrationDate).toLocaleDateString()}
                                     </p>
+                                </div>
+                                {/* Countdown Timer */}
+                                <div className="mt-4 flex justify-center">
+                                    <CountdownCircleTimer
+                                        isPlaying
+                                        duration={calculateRemainingTime(marathon.marathonStartDate)}
+                                        colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000', 0.33]]}
+                                        size={120}
+                                        onComplete={() => ({ shouldRepeat: false })}
+                                    >
+                                        {({ remainingTime }) => {
+                                            const days = Math.floor(remainingTime / 86400);
+                                            const hours = Math.floor((remainingTime % 86400) / 3600);
+                                            const minutes = Math.floor((remainingTime % 3600) / 60);
+                                            const seconds = remainingTime % 60;
+                                            return (
+                                                <div className="text-center">
+                                                    <p className="text-lg font-semibold">{days}d</p>
+                                                    <p className="text-sm">{hours}h {minutes}m {seconds}s</p>
+                                                </div>
+                                            );
+                                        }}
+                                    </CountdownCircleTimer>
                                 </div>
                                 <button
                                     className="btn btn-primary w-full mt-4"
