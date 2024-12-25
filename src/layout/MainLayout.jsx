@@ -21,7 +21,7 @@ const MainLayout = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light"
+                theme="dark"
             />
         </div>
     );

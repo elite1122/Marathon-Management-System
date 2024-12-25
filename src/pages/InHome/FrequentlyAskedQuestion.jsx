@@ -2,8 +2,8 @@ const FrequentlyAskedQuestion = () => {
     return (
         <div className="faq py-10 mt-4 rounded-2xl">
             <div className="container mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-                <div className="space-y-4 px-16">
+                <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+                <div className="space-y-4">
                     <div className="bg-base-200 collapse">
                         <input type="checkbox" className="peer" />
                         <div

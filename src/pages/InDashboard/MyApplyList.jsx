@@ -174,8 +174,8 @@ const MyApplyList = () => {
 
             {/* Modal for Update */}
             {showModal && (
-                <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
-                    <div className="bg-white p-6 rounded-md w-2/5 lg:w-3/5 max-h-[80vh] overflow-y-auto">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-600 bg-opacity-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-3/5 max-h-[80vh] overflow-y-auto">
                         <h2 className="text-xl font-semibold mb-4">Update Registration</h2>
                         <form onSubmit={handleUpdateSubmit}>
                             {/* Marathon Title */}
