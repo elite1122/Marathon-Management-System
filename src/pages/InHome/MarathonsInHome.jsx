@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
+import useAuth from '../../hooks/useAuth';
 
 const MarathonsInHome = () => {
     const [marathons, setMarathons] = useState([]);
     const navigate = useNavigate();
+    const { loading } = useAuth();
+
+    if (loading) {
+        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-bars loading-lg"></span></div>;
+    }
 
     useEffect(() => {
         // Fetch running campaigns (limited to 6 by the backend)

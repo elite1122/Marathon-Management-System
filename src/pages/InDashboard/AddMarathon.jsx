@@ -46,12 +46,30 @@ const AddMarathon = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    form.reset();
+
+                    // Clear form and state
+                    e.target.reset();
                     setStartRegistrationDate(null);
                     setEndRegistrationDate(null);
                     setMarathonStartDate(null);
-                    navigate('/dashboard/myMarathonList');
+
+                    // Navigate to "My Marathon List"
+                    navigate("/dashboard/myMarathonList");
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Failed to add marathon",
+                        text: "Something went wrong!",
+                    });
                 }
+            })
+            .catch((error) => {
+                console.error("Error adding marathon:", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Could not add the marathon. Please try again later.",
+                });
             });
     };
 

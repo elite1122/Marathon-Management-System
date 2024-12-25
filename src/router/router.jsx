@@ -1,5 +1,6 @@
 import {
     createBrowserRouter,
+    Navigate,
 } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
                 children: [
+                    {
+                        // Default route when visiting /dashboard
+                        index: true,
+                        element: <Navigate to="/dashboard/addMarathon" replace={true} />
+                    },
                     {
                         path: '/dashboard/addMarathon',
                         element: <PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
