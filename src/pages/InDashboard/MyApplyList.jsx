@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 
 const MyApplyList = () => {
     const [appliedMarathons, setAppliedMarathons] = useState([]);
+    const [filteredMarathons, setFilteredMarathons] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [currentMarathon, setCurrentMarathon] = useState(null);
     const [formData, setFormData] = useState({
@@ -14,11 +16,28 @@ const MyApplyList = () => {
     });
     const { user } = useAuth();
 
+    // Fetch all applied marathons
     useEffect(() => {
         fetch(`http://localhost:5000/registerMarathon?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setAppliedMarathons(data));
+            .then((res) => res.json())
+            .then((data) => {
+                setAppliedMarathons(data);
+                setFilteredMarathons(data); // Initialize filtered data
+            });
     }, [user.email]);
+
+    // Handle search input change
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+
+        // Filter marathons based on the search query
+        setFilteredMarathons(
+            appliedMarathons.filter((marathon) =>
+                marathon.marathonTitle.toLowerCase().includes(query)
+            )
+        );
+    };
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -37,8 +56,12 @@ const MyApplyList = () => {
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount > 0) {
-                            Swal.fire('Deleted!', 'The Registration has been deleted.', 'success');
-                            setAppliedMarathons(appliedMarathons.filter((marathon) => marathon._id !== id));
+                            Swal.fire('Deleted!', 'The registration has been deleted.', 'success');
+                            const updatedMarathons = appliedMarathons.filter(
+                                (marathon) => marathon._id !== id
+                            );
+                            setAppliedMarathons(updatedMarathons);
+                            setFilteredMarathons(updatedMarathons);
                         }
                     });
             }
@@ -75,11 +98,13 @@ const MyApplyList = () => {
             .then((data) => {
                 if (data.modifiedCount > 0) {
                     Swal.fire('Updated!', 'The registration details have been updated.', 'success');
-                    setAppliedMarathons(
-                        appliedMarathons.map((marathon) =>
-                            marathon._id === currentMarathon._id ? { ...marathon, ...updatedInfo } : marathon
-                        )
+                    const updatedMarathons = appliedMarathons.map((marathon) =>
+                        marathon._id === currentMarathon._id
+                            ? { ...marathon, ...updatedInfo }
+                            : marathon
                     );
+                    setAppliedMarathons(updatedMarathons);
+                    setFilteredMarathons(updatedMarathons);
                     setShowModal(false);
                 }
             });
@@ -93,6 +118,19 @@ const MyApplyList = () => {
     return (
         <div className="container mx-auto py-10">
             <h1 className="text-2xl font-bold text-center mb-4">My Apply List</h1>
+
+            {/* Search Bar */}
+            <div className="mb-4">
+                <input
+                    type="text"
+                    placeholder="Search by Marathon Title"
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    className="input input-bordered w-full"
+                />
+            </div>
+
+            {/* Table */}
             <div className="overflow-x-auto min-w-min">
                 <table className="table-auto w-full border border-gray-200 text-center">
                     <thead>
@@ -105,7 +143,7 @@ const MyApplyList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {appliedMarathons.map((marathon, index) => (
+                        {filteredMarathons.map((marathon, index) => (
                             <tr key={marathon._id}>
                                 <td className="px-4 py-2 border">{index + 1}</td>
                                 <td className="px-4 py-2 border">{marathon.marathonTitle}</td>
@@ -129,6 +167,9 @@ const MyApplyList = () => {
                         ))}
                     </tbody>
                 </table>
+                {filteredMarathons.length === 0 && (
+                    <p className="text-center mt-4">No marathons found!</p>
+                )}
             </div>
 
             {/* Modal for Update */}
