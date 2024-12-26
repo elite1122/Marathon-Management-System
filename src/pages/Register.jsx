@@ -8,7 +8,7 @@ import AuthContext from "../context/AuthContext";
 
 const Register = () => {
     const { createNewUser, signInWithGoogle } = useContext(AuthContext);
-    console.log("AuthContext:", createNewUser, signInWithGoogle);
+    // console.log("AuthContext:", createNewUser, signInWithGoogle);
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);

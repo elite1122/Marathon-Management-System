@@ -11,6 +11,7 @@ import {
 
 import AuthContext from "./AuthContext";
 import auth from "../firebase/firebase.init";
+import axios from "axios";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -55,12 +56,37 @@ const AuthProvider = ({ children }) => {
 
     // Monitor auth state changes
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false);
-        });
-        return () => unsubscribe();
-    }, []);
+            
+            // console.log('state captured', currentUser?.email);
+
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+
+                axios.post('https://marathon-management-system-server-alpha.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        // console.log('login token', res.data);
+                        setLoading(false);
+                    })
+
+            }
+            else {
+                axios.post('https://marathon-management-system-server-alpha.vercel.app/logout', {}, {
+                    withCredentials: true
+                })
+                .then(res => {
+                    // console.log('logout', res.data);
+                    setLoading(false);
+                })
+            }
+            
+        })
+
+        return () => {
+            unsubscribe();
+        }
+    }, [])
 
     const authInfo = {
         user,

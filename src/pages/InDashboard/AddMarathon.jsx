@@ -29,7 +29,7 @@ const AddMarathon = () => {
         initialData.creatorName = user.displayName;
         initialData.creatorEmail = user.email;
 
-        fetch("http://localhost:5000/marathons", {
+        fetch("https://marathon-management-system-server-alpha.vercel.app/marathons", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

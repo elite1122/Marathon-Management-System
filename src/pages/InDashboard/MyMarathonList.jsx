@@ -3,10 +3,12 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const MyMarathonList = () => {
     const [marathons, setMarathons] = useState([]);
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const [selectedMarathon, setSelectedMarathon] = useState(null);
 
     // States for dates in the update form
@@ -15,9 +17,8 @@ const MyMarathonList = () => {
     const [marathonStartDate, setMarathonStartDate] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/marathons?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setMarathons(data));
+        axiosSecure.get(`/marathons?email=${user.email}`)
+            .then(res => setMarathons(res.data));
     }, [user.email]);
 
     const handleUpdate = (marathon) => {
@@ -39,7 +40,7 @@ const MyMarathonList = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/marathons/${id}`, {
+                fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons/${id}`, {
                     method: 'DELETE',
                 })
                     .then((res) => res.json())
@@ -68,7 +69,7 @@ const MyMarathonList = () => {
         };
 
         // Make API request to update marathon data
-        fetch(`http://localhost:5000/marathons/${selectedMarathon._id}`, {
+        fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons/${selectedMarathon._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const Marathons = () => {
     const [marathons, setMarathons] = useState([]);
     const [sortOrder, setSortOrder] = useState('desc'); // Default sort order
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/marathons?sort=${sortOrder}`)
-            .then((res) => res.json())
-            .then((data) => setMarathons(data))
+        axiosSecure.get(`/marathons?sort=${sortOrder}`)
+            .then((res) => setMarathons(res.data))
             .catch((err) => console.error('Error fetching marathons:', err));
     }, [sortOrder]); // Re-fetch data when sortOrder changes
 

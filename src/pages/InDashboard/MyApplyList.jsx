@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const MyApplyList = () => {
     const [appliedMarathons, setAppliedMarathons] = useState([]);
@@ -15,15 +16,16 @@ const MyApplyList = () => {
         additionalInfo: '',
     });
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     // Fetch all applied marathons
     useEffect(() => {
-        fetch(`http://localhost:5000/registerMarathon?email=${user.email}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setAppliedMarathons(data);
-                setFilteredMarathons(data); // Initialize filtered data
+        axiosSecure.get(`/registerMarathon?email=${user.email}`)
+            .then(res => {
+                setAppliedMarathons(res.data);
+                setFilteredMarathons(res.data); // Initialize filtered data
             });
+
     }, [user.email]);
 
     // Handle search input change
@@ -50,23 +52,34 @@ const MyApplyList = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/registerMarathon/${id}`, {
-                    method: 'DELETE',
-                })
-                    .then((res) => res.json())
-                    .then((data) => {
-                        if (data.deletedCount > 0) {
+                axiosSecure
+                    .delete(`/registerMarathon/${id}`)
+                    .then((res) => {
+                        // Check for a successful status code (200-299) instead of relying on deletedCount
+                        if (res.status >= 200 && res.status < 300) {
                             Swal.fire('Deleted!', 'The registration has been deleted.', 'success');
-                            const updatedMarathons = appliedMarathons.filter(
-                                (marathon) => marathon._id !== id
-                            );
-                            setAppliedMarathons(updatedMarathons);
-                            setFilteredMarathons(updatedMarathons);
+
+                            // Re-fetch the data to ensure UI syncs with the database
+                            return axiosSecure.get(`/registerMarathon?email=${user.email}`);
+                        } else {
+                            throw new Error('Failed to delete registration');
                         }
+                    })
+                    .then((res) => {
+                        setAppliedMarathons(res.data);
+                        setFilteredMarathons(res.data);
+                    })
+                    .catch((error) => {
+                        console.error('Error deleting registration:', error);
+                        Swal.fire('Error', 'Failed to delete the registration. Please try again.', 'error');
                     });
             }
         });
     };
+
+
+
+
 
     const handleUpdateClick = (marathon) => {
         setCurrentMarathon(marathon);
@@ -87,7 +100,7 @@ const MyApplyList = () => {
             marathonStartDate: currentMarathon.startDate,
         };
 
-        fetch(`http://localhost:5000/registerMarathon/${currentMarathon._id}`, {
+        fetch(`https://marathon-management-system-server-alpha.vercel.app/registerMarathon/${currentMarathon._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

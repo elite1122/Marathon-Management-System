@@ -15,7 +15,7 @@ const MarathonsInHome = () => {
 
     useEffect(() => {
         // Fetch running campaigns (limited to 6 by the backend)
-        fetch('http://localhost:5000/marathonsInHome')
+        fetch('https://marathon-management-system-server-alpha.vercel.app/marathonsInHome')
             .then((res) => res.json())
             .then((data) => setMarathons(data))
             .catch((err) => console.error('Error fetching marathons:', err));

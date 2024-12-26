@@ -8,21 +8,21 @@ const DynamicTitle = () => {
     useEffect(() => {
         // Define titles for static routes
         const routeTitles = {
-            "/": "Home | Marathon Management",
-            "/marathons": "All Marathons | Marathon Management",
-            "/dashboard": "Dashboard | Marathon Management",
-            "/dashboard/addMarathon": "Add Marathon | Marathon Management",
-            "/dashboard/myMarathonList": "My Marathon List | Marathon Management",
-            "/dashboard/myApplyList": "My Apply List | Marathon Management",
+            "/": "Home | Go Marathon",
+            "/marathons": "All Marathons | Go Marathon",
+            "/dashboard": "Dashboard | Go Marathon",
+            "/dashboard/addMarathon": "Add Marathon | Go Marathon",
+            "/dashboard/myMarathonList": "My Marathon List | Go Marathon",
+            "/dashboard/myApplyList": "My Apply List | Go Marathon",
         };
 
-        let currentTitle = "Marathon Management System"; // Default title
+        let currentTitle = "Go Marathon"; // Default title
 
         // Handle dynamic routes
         if (location.pathname.startsWith("/marathons/") && id) {
-            currentTitle = `Marathon Details | Marathon Management Marathon ID: ${id}`;
+            currentTitle = `Marathon Details | Go Marathon Marathon ID: ${id}`;
         } else if (location.pathname.startsWith("/registerMarathon/") && id) {
-            currentTitle = `Register Marathon | Marathon Management Marathon ID: ${id}`;
+            currentTitle = `Register Marathon | Go Marathon Marathon ID: ${id}`;
         } else {
             // Handle static paths
             currentTitle = routeTitles[location.pathname] || currentTitle;

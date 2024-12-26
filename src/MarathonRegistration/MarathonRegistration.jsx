@@ -36,7 +36,7 @@ const MarathonRegistration = () => {
             marathonId: _id, // Include marathonId in the registration payload
         };
     
-        fetch("http://localhost:5000/registerMarathon", {
+        fetch("https://marathon-management-system-server-alpha.vercel.app/registerMarathon", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
