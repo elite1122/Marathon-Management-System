@@ -144,7 +144,7 @@ const MyApplyList = () => {
             </div>
 
             {/* Table */}
-            <div className="overflow-x-auto min-w-min">
+            <div className="overflow-x-auto">
                 <table className="table-auto w-full border border-gray-200 text-center">
                     <thead>
                         <tr>
