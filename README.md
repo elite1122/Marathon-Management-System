@@ -127,4 +127,4 @@ If you like this project, consider giving it a ⭐ on GitHub!
 ✨ **[Experience the Live Version Here!](https://gomarathonbd.web.app)** ✨
 
 ## 📂 GitHub Repository
-✨ **[Visit Repository!](https://github.com/programming-hero-web-course2/b10a11-client-side-elite1122)** ✨
+✨ **[Visit Repository!](https://github.com/elite1122/Marathon-Management-System)** ✨
