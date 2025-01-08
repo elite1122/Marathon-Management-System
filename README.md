@@ -92,6 +92,29 @@ The Marathon Management System is a platform that helps organize marathon events
 
 ---
 
+## 🔗 Dependencies
+- @fortawesome/fontawesome-svg-core: ^6.7.2,
+- fortawesome/free-brands-svg-icons: ^6.7.2,
+- @fortawesome/free-solid-svg-icons: ^6.7.2,
+- @fortawesome/react-fontawesome: ^0.2.2,
+- axios: ^1.7.9,
+- firebase: ^11.1.0,
+- localforage: ^1.10.0,
+- match-sorter: ^8.0.0,
+- react": ^18.3.1",
+- react-countdown-circle-timer: ^3.2.1,
+- react-datepicker: ^7.5.0,
+- react-dom: ^18.3.1,
+- react-icons: ^5.4.0,
+- react-router-dom: ^7.1.0,
+- react-toastify: ^11.0.2,
+- react-tooltip: ^5.28.0,
+- sort-by: ^1.2.0,
+- sweetalert2: ^11.15.3
+
+## Installation
+- Run `npm install` to install project dependencies.
+
 
 ## 📣 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check out the issues page if you want to contribute.
