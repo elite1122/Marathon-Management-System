@@ -75,7 +75,7 @@ const AddMarathon = () => {
 
     return (
         <div>
-            <h2 className="text-3xl font-bold text-center">Create Marathon</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-center">Create Marathon</h2>
             <form onSubmit={handleAddMarathon} className="card-body">
                 {/* Marathon Title */}
                 <div className="form-control">

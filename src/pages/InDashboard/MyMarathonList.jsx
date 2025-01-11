@@ -10,6 +10,7 @@ const MyMarathonList = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [selectedMarathon, setSelectedMarathon] = useState(null);
+    const [loading, setLoading] = useState(false); // Loading state
 
     // States for dates in the update form
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
@@ -17,8 +18,11 @@ const MyMarathonList = () => {
     const [marathonStartDate, setMarathonStartDate] = useState(null);
 
     useEffect(() => {
+        setLoading(true); // Start loading
         axiosSecure.get(`/marathons?email=${user.email}`)
-            .then(res => setMarathons(res.data));
+            .then((res) => setMarathons(res.data))
+            .catch((err) => console.error("Error fetching marathons:", err))
+            .finally(() => setLoading(false)); // End loading
     }, [user.email]);
 
     const handleUpdate = (marathon) => {
@@ -40,6 +44,7 @@ const MyMarathonList = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
+                setLoading(true); // Start loading
                 fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons/${id}`, {
                     method: 'DELETE',
                 })
@@ -49,14 +54,16 @@ const MyMarathonList = () => {
                             Swal.fire('Deleted!', 'The marathon has been deleted.', 'success');
                             setMarathons(marathons.filter((marathon) => marathon._id !== id));
                         }
-                    });
+                    })
+                    .catch((err) => console.error("Error deleting marathon:", err))
+                    .finally(() => setLoading(false)); // End loading
             }
         });
     };
 
-    // Handle the form submission for updating the marathon
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
+        setLoading(true); // Start loading
         const updatedMarathon = {
             marathonTitle: e.target.marathonTitle.value,
             startRegistrationDate: startRegistrationDate,
@@ -68,75 +75,77 @@ const MyMarathonList = () => {
             marathonImage: e.target.marathonImage.value,
         };
 
-        // Make API request to update marathon data
         fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons/${selectedMarathon._id}`, {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedMarathon),
         })
-        .then((res) => res.json())
-        .then((data) => {
-            if (data.modifiedCount > 0) {
-                Swal.fire('Success', 'Marathon updated successfully!', 'success');
-                setMarathons(marathons.map((marathon) => 
-                    marathon._id === selectedMarathon._id ? { ...marathon, ...updatedMarathon } : marathon
-                ));
-            } else {
-                Swal.fire('Error', 'Failed to update marathon', 'error');
-            }
-            setSelectedMarathon(null); // Close the modal after submission
-        })
-        .catch((error) => {
-            console.error("Error updating marathon:", error);
-            Swal.fire('Error', 'An error occurred while updating the marathon', 'error');
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    Swal.fire('Success', 'Marathon updated successfully!', 'success');
+                    setMarathons(marathons.map((marathon) =>
+                        marathon._id === selectedMarathon._id ? { ...marathon, ...updatedMarathon } : marathon
+                    ));
+                } else {
+                    Swal.fire('Error', 'Failed to update marathon', 'error');
+                }
+                setSelectedMarathon(null); // Close the modal
+            })
+            .catch((error) => {
+                console.error("Error updating marathon:", error);
+                Swal.fire('Error', 'An error occurred while updating the marathon', 'error');
+            })
+            .finally(() => setLoading(false)); // End loading
     };
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="container mx-auto py-10 min-h-screen">
             <h1 className="text-2xl font-bold text-center mb-4">My Marathons</h1>
-            <div className="overflow-x-auto">
-                <table className="table-auto w-full border border-gray-200 text-center">
-                    <thead>
-                        <tr>
-                            <th className="px-4 py-2 border">#</th>
-                            <th className="px-4 py-2 border">Title</th>
-                            <th className="px-4 py-2 border">Location</th>
-                            <th className="px-4 py-2 border">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {marathons.map((marathon, index) => (
-                            <tr key={marathon._id}>
-                                <td className="px-4 py-2 border">{index + 1}</td>
-                                <td className="px-4 py-2 border">{marathon.marathonTitle}</td>
-                                <td className="px-4 py-2 border">{marathon.location}</td>
-                                <td className="px-4 py-2 border space-y-3">
-                                    <button
-                                        onClick={() => handleUpdate(marathon)}
-                                        className="btn btn-sm btn-primary mr-2"
-                                    >
-                                        Update
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(marathon._id)}
-                                        className="btn btn-sm btn-danger"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                {marathons.length === 0 && (
-                    <p className="text-center mt-4">No marathons found!</p>
-                )}
-            </div>
 
-            {/* Update Modal */}
+            {loading ? (
+                <div className="flex justify-center items-center"><span className="loading loading-bars loading-lg"></span></div>
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className="table-auto w-full border border-gray-200 text-center">
+                        <thead>
+                            <tr>
+                                <th className="px-4 py-2 border">#</th>
+                                <th className="px-4 py-2 border">Title</th>
+                                <th className="px-4 py-2 border">Location</th>
+                                <th className="px-4 py-2 border">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {marathons.map((marathon, index) => (
+                                <tr key={marathon._id}>
+                                    <td className="px-4 py-2 border">{index + 1}</td>
+                                    <td className="px-4 py-2 border">{marathon.marathonTitle}</td>
+                                    <td className="px-4 py-2 border">{marathon.location}</td>
+                                    <td className="px-4 py-2 border space-y-3">
+                                        <button
+                                            onClick={() => handleUpdate(marathon)}
+                                            className="btn btn-sm btn-primary mr-2"
+                                        >
+                                            Update
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(marathon._id)}
+                                            className="btn btn-sm btn-danger"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {marathons.length === 0 && (
+                        <p className="text-center mt-4">No marathons found!</p>
+                    )}
+                </div>
+            )}
+
             {selectedMarathon && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-3/5 max-h-[80vh] overflow-y-auto">

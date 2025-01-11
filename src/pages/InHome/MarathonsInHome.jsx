@@ -29,7 +29,7 @@ const MarathonsInHome = () => {
 
     return (
         <div className="container mx-auto py-12">
-            <h1 className="text-4xl font-bold text-center mb-6">Marathons</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-center mb-4 md:mb-6">Marathons</h1>
             {marathons.length === 0 ? (
                 <p className="text-center">No marathons found!</p>
             ) : (
@@ -41,7 +41,7 @@ const MarathonsInHome = () => {
                             data-tooltip-id={`tooltip-${marathon._id}`} // Unique ID for each tooltip
                             data-tooltip-content={`Registration deadline: ${marathon.endRegistrationDate}`}
                         >
-                            <figure className='h-64 px-6'>
+                            <figure className='h-48 px-6'>
                                 <img
                                     src={marathon.marathonImage}
                                     alt={marathon.marathonTitle}

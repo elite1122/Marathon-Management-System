@@ -40,7 +40,7 @@ const Navbar = () => {
                             isActive ? "text-blue-500 font-bold" : ""
                         }
                     >
-                        Marathons
+                        All Marathons
                     </NavLink>
 
                     {user && (
@@ -55,6 +55,14 @@ const Navbar = () => {
                             </NavLink>
                         </>
                     )}
+                    <NavLink
+                        to="/contact"
+                        className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-bold" : ""
+                        }
+                    >
+                        Contact Us
+                    </NavLink>
                 </div>
 
                 {/* User Profile & Conditional Buttons */}
@@ -149,7 +157,7 @@ const Navbar = () => {
                                     isActive ? "text-blue-500 font-bold" : ""
                                 }
                             >
-                                Marathons
+                                All Marathons
                             </NavLink>
                         </li>
                         {user && (
@@ -164,6 +172,16 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                         )}
+                        <li>
+                            <NavLink
+                                to="/contact"
+                                className={({ isActive }) =>
+                                    isActive ? "text-blue-500 font-bold" : ""
+                                }
+                            >
+                                Contact Us
+                            </NavLink>
+                        </li>
                         {!user ? (
                             <>
                                 <li>

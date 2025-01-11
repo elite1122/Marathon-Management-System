@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const Marathons = () => {
     const [marathons, setMarathons] = useState([]);
+    const [loading, setLoading] = useState(true); // Loading state
     const [sortOrder, setSortOrder] = useState('desc'); // Default sort order
     const navigate = useNavigate();
-    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get(`/marathons?sort=${sortOrder}`)
-            .then((res) => setMarathons(res.data))
-            .catch((err) => console.error('Error fetching marathons:', err));
+        // Start loading
+        setLoading(true);
+        fetch(
+            `https://marathon-management-system-server-alpha.vercel.app/marathons?sort=${sortOrder}`,
+            {
+                credentials: 'include',
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                setMarathons(data);
+                setLoading(false); // Stop loading
+            })
+            .catch((err) => {
+                console.error('Error fetching marathons:', err);
+                setLoading(false); // Stop loading even on error
+            });
     }, [sortOrder]); // Re-fetch data when sortOrder changes
 
     const handleSortChange = (e) => {
@@ -25,9 +38,13 @@ const Marathons = () => {
         return Math.max((start - now) / 1000, 0); // Return remaining time in seconds
     };
 
+    if (loading) {
+        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-bars loading-lg"></span></div>;
+    }
+
     return (
         <div className="container mx-auto py-10 min-h-screen">
-            <h1 className="text-4xl font-bold text-center mb-6">All Marathons</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-center mb-6">All Marathons</h1>
 
             {/* Sorting Options */}
             <div className="flex justify-end mb-4">
@@ -50,7 +67,7 @@ const Marathons = () => {
                             key={marathon._id}
                             className="card shadow-xl pt-5"
                         >
-                            <figure className='h-64 px-6'>
+                            <figure className="h-48 px-6">
                                 <img
                                     src={marathon.marathonImage}
                                     alt={marathon.marathonTitle}
