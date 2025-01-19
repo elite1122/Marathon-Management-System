@@ -4,29 +4,27 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const Marathons = () => {
     const [marathons, setMarathons] = useState([]);
-    const [loading, setLoading] = useState(true); // Loading state
-    const [sortOrder, setSortOrder] = useState('desc'); // Default sort order
+    const [loading, setLoading] = useState(true);
+    const [sortOrder, setSortOrder] = useState('desc');
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Start loading
         setLoading(true);
-        fetch(
-            `https://marathon-management-system-server-alpha.vercel.app/marathons?sort=${sortOrder}`,
-            {
-                credentials: 'include',
-            }
-        )
+        fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons?sort=${sortOrder}`, {
+            credentials: 'include',
+        })
             .then((res) => res.json())
             .then((data) => {
-                setMarathons(data);
-                setLoading(false); // Stop loading
+                console.log('API Response:', data); // Debugging the response
+                setMarathons(Array.isArray(data) ? data : []); // Ensure it's an array
+                setLoading(false);
             })
             .catch((err) => {
                 console.error('Error fetching marathons:', err);
-                setLoading(false); // Stop loading even on error
+                setMarathons([]); // Set to an empty array on error
+                setLoading(false);
             });
-    }, [sortOrder]); // Re-fetch data when sortOrder changes
+    }, [sortOrder]);
 
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
@@ -35,18 +33,21 @@ const Marathons = () => {
     const calculateRemainingTime = (marathonStartDate) => {
         const now = new Date();
         const start = new Date(marathonStartDate);
-        return Math.max((start - now) / 1000, 0); // Return remaining time in seconds
+        return Math.max((start - now) / 1000, 0);
     };
 
     if (loading) {
-        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-bars loading-lg"></span></div>;
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
     }
 
     return (
         <div className="container mx-auto py-10 min-h-screen">
             <h1 className="text-2xl md:text-4xl font-bold text-center mb-6">All Marathons</h1>
 
-            {/* Sorting Options */}
             <div className="flex justify-end mb-4">
                 <select
                     value={sortOrder}
@@ -63,10 +64,7 @@ const Marathons = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {marathons.map((marathon) => (
-                        <div
-                            key={marathon._id}
-                            className="card shadow-xl pt-5"
-                        >
+                        <div key={marathon._id} className="card shadow-xl pt-5">
                             <figure className="h-48 px-6">
                                 <img
                                     src={marathon.marathonImage}
@@ -86,7 +84,6 @@ const Marathons = () => {
                                     </p>
                                 </div>
 
-                                {/* Countdown Timer */}
                                 <div className="mt-4 flex justify-center">
                                     <CountdownCircleTimer
                                         isPlaying
