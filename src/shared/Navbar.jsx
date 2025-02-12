@@ -63,6 +63,14 @@ const Navbar = () => {
                     >
                         Contact Us
                     </NavLink>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-bold" : ""
+                        }
+                    >
+                        About Us
+                    </NavLink>
                 </div>
 
                 {/* User Profile & Conditional Buttons */}
@@ -180,6 +188,16 @@ const Navbar = () => {
                                 }
                             >
                                 Contact Us
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/about"
+                                className={({ isActive }) =>
+                                    isActive ? "text-blue-500 font-bold" : ""
+                                }
+                            >
+                                About Us
                             </NavLink>
                         </li>
                         {!user ? (
