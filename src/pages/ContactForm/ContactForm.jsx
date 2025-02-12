@@ -45,7 +45,7 @@ const ContactForm = () => {
                 <h3 className="text-2xl md:text-4xl font-bold pt-6">
                     Contact <span>Us</span>
                 </h3>
-                <p className="text-gray-600 mt-3 text-lg">Get in touch</p>
+                <p className="text-gray-700 mt-3 text-lg dark:text-gray-400">Get in touch</p>
 
                 <div
                     className="mt-8 flex md:flex-row flex-col
@@ -58,25 +58,25 @@ const ContactForm = () => {
                             name="name"
                             placeholder="Your Name"
                             required
-                            className="input input-bordered text-base"
+                            className="input input-bordered text-base bg-white text-black dark:bg-gray-800 dark:text-white"
                         />
                         <input
                             type="email"
                             name="email"
                             placeholder="Your Email Address"
                             required
-                            className="input input-bordered text-base"
+                            className="input input-bordered text-base bg-white text-black dark:bg-gray-800 dark:text-white"
                         />
                         <textarea
                             name="message"
                             placeholder="Your Message"
                             rows={10}
                             required
-                            className="textarea textarea-bordered text-base"
+                            className="textarea textarea-bordered text-base bg-white text-black dark:bg-gray-800 dark:text-white"
                         />
                         <button
                             type="submit"
-                            className="flex btn btn-outline text-gray-700 font-semibold w-max"
+                            className="flex btn btn-outline text-gray-700 font-semibold w-max dark:text-white"
                         >
                             Send Message
                         </button>
