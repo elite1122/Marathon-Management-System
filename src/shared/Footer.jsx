@@ -56,31 +56,9 @@ const Footer = () => {
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/marathons'>All Marathons</Link></li>
                             <li><Link to='/contact'>Contact us</Link></li>
+                            <li><Link to='/about'>About Us</Link></li>
                         </div>
                     </div>
-                    {/* Right
-                    <div className="pt-3">
-                        <div className="pb-3">
-                            <h2 className="text-opacity-90 font-bold text-lg pb-3">Subscribe</h2>
-                            <p className="space-y-2 text-opacity-70">
-                                Subscribe to our newsletter for the latest updates.
-                            </p>
-                        </div>
-                        <div className="flex">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="border border-gray-300 px-4 py-2 rounded-l-lg focus:outline-none w-full dark:bg-gray-800 dark:text-white"
-                                style={{ borderRight: 'none' }}
-                            />
-                            <button
-                                className="bg-gradient-to-r from-pink-400 to-yellow-400 text-black font-bold py-2 px-6 rounded-r-lg shadow-lg hover:from-pink-500 hover:to-yellow-500 transition duration-300"
-                                style={{ borderLeft: 'none' }}
-                            >
-                                Subscribe
-                            </button>
-                        </div>
-                    </div> */}
                 </div>
                 <div className="border-b-2 mb-5"></div>
                 <div className="w-full mx-auto flex justify-center items-center pb-5">
