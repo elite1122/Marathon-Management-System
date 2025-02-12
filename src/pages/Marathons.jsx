@@ -52,7 +52,7 @@ const Marathons = () => {
                 <select
                     value={sortOrder}
                     onChange={handleSortChange}
-                    className="select select-bordered w-max border-blue-400"
+                    className="select select-bordered w-max border-blue-400 bg-white text-black dark:bg-gray-800 dark:text-white"
                 >
                     <option value="desc">Newest to Oldest</option>
                     <option value="asc">Oldest to Newest</option>
