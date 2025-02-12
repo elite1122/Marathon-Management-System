@@ -1,11 +1,11 @@
 const AboutUs = () => {
     return (
-      <section className="relative py-16">
+      <section className="relative py-16 min-h-screen">
         <div className="absolute pointer-events-none"></div>
         <div className="relative mx-auto text-center space-y-8">
           {/* Title */}
           <h2 className="text-2xl md:text-4xl font-bold tracking-tight">
-            About <span className="text-blue-600">Marathon Management System</span>
+            About Go Marathon
           </h2>
           {/* Subtitle */}
           <p className="text-lg lg:text-xl dark:text-gray-400">
