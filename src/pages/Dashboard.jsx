@@ -12,7 +12,7 @@ const Dashboard = () => {
         <div className="">
             {/* Toggle Button */}
             <button
-                className="flex btn btn-outline border-none text-gray-700 mt-4 ml-4 text-xl font-bold"
+                className="flex btn btn-outline border-none text-black dark:text-white mt-4 ml-4 text-xl font-bold"
                 onClick={toggleDrawer}
             >
                 {isDrawerOpen ? '-' : '+'}

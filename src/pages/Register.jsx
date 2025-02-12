@@ -82,7 +82,7 @@ const Register = () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
             <div className="card w-full max-w-lg shrink-0 shadow-2xl p-10">
-                <h2 className="text-3xl font-bold text-center">Register Your Account</h2>
+                <h2 className="text-2xl md:text-4xl font-bold text-center">Register Your Account</h2>
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="form-control">
                         <label className="label">
@@ -92,7 +92,7 @@ const Register = () => {
                             type="text"
                             placeholder="name"
                             name="name"
-                            className="input input-bordered bg-white text-black"
+                            className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                             required
                         />
                     </div>
@@ -105,7 +105,7 @@ const Register = () => {
                             type="email"
                             placeholder="email"
                             name="email"
-                            className="input input-bordered bg-white text-black"
+                            className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                             required
                         />
                     </div>
@@ -118,7 +118,7 @@ const Register = () => {
                             type="text"
                             placeholder="photo url"
                             name="photo"
-                            className="input input-bordered bg-white text-black"
+                            className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                             required
                         />
                     </div>
@@ -131,7 +131,7 @@ const Register = () => {
                             type={showPassword ? "text" : "password"}
                             placeholder="password"
                             name="password"
-                            className="input input-bordered bg-white text-black"
+                            className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                             required
                         />
                         <button

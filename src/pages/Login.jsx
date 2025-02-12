@@ -47,7 +47,7 @@ const Login = () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
             <div className="card w-full max-w-lg shadow-2xl p-10">
-                <h2 className="text-3xl font-bold text-center">Login Your Account</h2>
+                <h2 className="text-2xl md:text-4xl font-bold text-center">Login Your Account</h2>
                 <form onSubmit={handleSubmit} className="card-body">
                     {/* Email Input */}
                     <div className="form-control">
@@ -74,7 +74,7 @@ const Login = () => {
                             name="password"
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
-                            className="input input-bordered bg-white text-black"
+                            className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                             required
                         />
                         <button

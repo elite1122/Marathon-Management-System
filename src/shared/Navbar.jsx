@@ -14,7 +14,7 @@ const Navbar = ({ isDarkMode, handleToggleTheme }) => {
         <div className={`shadow-md sticky top-0 z-50 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
             <div className="flex justify-between w-11/12 mx-auto items-center py-3 flex-wrap">
                 {/* Logo */}
-                <div>
+                <div className="bg-none">
                     <Link to={'/'}>
                         <img
                             className="w-16 h-12 btn"
