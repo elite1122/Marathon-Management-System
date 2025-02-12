@@ -11,7 +11,7 @@ const Navbar = ({ isDarkMode, handleToggleTheme }) => {
     }
 
     return (
-        <div className='shadow-md sticky top-0 z-50 transition-colors duration-300 bg-white text-black'>
+        <div className={`shadow-md sticky top-0 z-50 transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
             <div className="flex justify-between w-11/12 mx-auto items-center py-3 flex-wrap">
                 {/* Logo */}
                 <div>
@@ -75,7 +75,7 @@ const Navbar = ({ isDarkMode, handleToggleTheme }) => {
 
                 {/* User Profile & Conditional Buttons */}
                 <div className="flex items-center space-x-4">
-                <header className="flex justify-end p-4">
+                    <header className="flex justify-end p-4">
                         <label className="swap swap-rotate">
                             {/* Hidden Checkbox */}
                             <input type="checkbox" className="theme-controller" checked={isDarkMode} onChange={handleToggleTheme} />
