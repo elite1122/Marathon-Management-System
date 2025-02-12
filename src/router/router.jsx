@@ -16,6 +16,7 @@ import MyMarathonList from "../pages/InDashboard/myMarathonList";
 import MyApplyList from "../pages/InDashboard/MyApplyList";
 import MarathonRegistration from "../MarathonRegistration/MarathonRegistration";
 import ContactForm from "../pages/ContactForm/ContactForm";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <ContactForm></ContactForm>
+            },
+            {
+                path: '/about',
+                element: <AboutUs></AboutUs>,
             }
         ]
     },
