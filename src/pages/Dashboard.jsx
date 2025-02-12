@@ -33,7 +33,7 @@ const Dashboard = () => {
                         onClick={toggleDrawer}
                     ></label>
 
-                    <ul className="menu p-4 w-64 bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-64 bg-base-200 text-black dark:bg-gray-800 dark:text-white">
                         <li>
                             <Link to="/dashboard/addMarathon" onClick={toggleDrawer}>
                                 Add Marathon

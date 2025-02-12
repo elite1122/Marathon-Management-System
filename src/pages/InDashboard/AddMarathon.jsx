@@ -80,13 +80,13 @@ const AddMarathon = () => {
                 {/* Marathon Title */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Marathon Title</span>
+                        <span className="">Marathon Title</span>
                     </label>
                     <input
                         type="text"
                         name="marathonTitle"
                         placeholder="Enter marathon title"
-                        className="input input-bordered"
+                        className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>
@@ -94,14 +94,14 @@ const AddMarathon = () => {
                 {/* Start Registration Date */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Start Registration Date</span>
+                        <span className="">Start Registration Date</span>
                     </label>
                     <DatePicker
                         selected={startRegistrationDate} // Bind to state
                         onChange={(date) => setStartRegistrationDate(date)} // Update state
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Enter start registration date"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>
@@ -109,14 +109,14 @@ const AddMarathon = () => {
                 {/* End Registration Date */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">End Registration Date</span>
+                        <span className="">End Registration Date</span>
                     </label>
                     <DatePicker
                         selected={endRegistrationDate} // Bind to state
                         onChange={(date) => setEndRegistrationDate(date)} // Update state
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Enter end registration date"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>
@@ -124,14 +124,14 @@ const AddMarathon = () => {
                 {/* Marathon Start Date */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Marathon Start Date</span>
+                        <span className="">Marathon Start Date</span>
                     </label>
                     <DatePicker
                         selected={marathonStartDate} // Bind to state
                         onChange={(date) => setMarathonStartDate(date)} // Update state
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Enter marathon start date"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>
@@ -139,13 +139,13 @@ const AddMarathon = () => {
                 {/* Location */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Location</span>
+                        <span className="">Location</span>
                     </label>
                     <input
                         type="text"
                         name="location"
                         placeholder="Enter location"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>
@@ -153,12 +153,12 @@ const AddMarathon = () => {
                 {/* Running Distance */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Running Distance</span>
+                        <span className="">Running Distance</span>
                     </label>
                     <select
                         name="runningDistance"
                         defaultValue="Select running distance"
-                        className="select select-ghost w-full"
+                        className="select select-ghost w-full bg-white text-black dark:bg-gray-800 dark:text-white"
                     >
                         <option disabled>Select running distance</option>
                         <option>25k</option>
@@ -170,13 +170,13 @@ const AddMarathon = () => {
                 {/* Description */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Description</span>
+                        <span className="">Description</span>
                     </label>
                     <input
                         type="text"
                         name="description"
                         placeholder="Enter description"
-                        className="input input-bordered"
+                        className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>
@@ -184,13 +184,13 @@ const AddMarathon = () => {
                 {/* Marathon Image URL */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Marathon Image URL</span>
+                        <span className="">Marathon Image URL</span>
                     </label>
                     <input
                         type="url"
                         name="marathonImage"
                         placeholder="Marathon Image URL"
-                        className="input input-bordered"
+                        className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                         required
                     />
                 </div>

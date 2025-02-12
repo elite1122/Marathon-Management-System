@@ -149,7 +149,7 @@ const MyApplyList = () => {
                     placeholder="Search by Marathon Title"
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-white text-black dark:bg-gray-800 dark:text-white"
                 />
             </div>
 
