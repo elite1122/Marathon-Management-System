@@ -10,9 +10,7 @@ const Marathons = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons?sort=${sortOrder}`, {
-            credentials: 'include',
-        })
+        fetch(`https://marathon-management-system-server-alpha.vercel.app/marathons?sort=${sortOrder}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log('API Response:', data); // Debugging the response
