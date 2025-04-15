@@ -123,18 +123,20 @@ const MyMarathonList = () => {
                                     <td className="px-4 py-2 border">{marathon.marathonTitle}</td>
                                     <td className="px-4 py-2 border">{marathon.location}</td>
                                     <td className="px-4 py-2 border space-y-3">
-                                        <button
-                                            onClick={() => handleUpdate(marathon)}
-                                            className="btn btn-sm btn-primary mr-2"
-                                        >
-                                            Update
-                                        </button>
-                                        <button
-                                            onClick={() => handleDelete(marathon._id)}
-                                            className="btn btn-sm btn-danger"
-                                        >
-                                            Delete
-                                        </button>
+                                        <div className='"flex flex-col lg:flex-row space-y-2 lg:space-y-0 justify-center"'>
+                                            <button
+                                                onClick={() => handleUpdate(marathon)}
+                                                className="btn btn-warning mr-2"
+                                            >
+                                                Update
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(marathon._id)}
+                                                className="btn btn-error"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
@@ -147,9 +149,15 @@ const MyMarathonList = () => {
             )}
 
             {selectedMarathon && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-3/5 max-h-[80vh] overflow-y-auto">
-                        <h2 className="font-bold text-lg mb-4">Update Marathon</h2>
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                    onClick={() => setSelectedMarathon(null)} // Close modal on background click
+                >
+                    <div
+                        className="bg-white p-6 rounded-lg shadow-lg w-3/5 max-h-[80vh] overflow-y-auto"
+                        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+                    >
+                        <h2 className="font-bold text-lg dark:text-black mb-4">Update Marathon</h2>
                         <form onSubmit={handleUpdateSubmit}>
                             <div className="form-control">
                                 <label className="label">
@@ -159,7 +167,7 @@ const MyMarathonList = () => {
                                     type="text"
                                     name="marathonTitle"
                                     defaultValue={selectedMarathon.marathonTitle}
-                                    className="input input-bordered"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                                     required
                                 />
                             </div>
@@ -172,7 +180,7 @@ const MyMarathonList = () => {
                                     selected={startRegistrationDate}
                                     onChange={(date) => setStartRegistrationDate(date)}
                                     dateFormat="dd/MM/yyyy"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white w-full"
                                     required
                                 />
                             </div>
@@ -185,7 +193,7 @@ const MyMarathonList = () => {
                                     selected={endRegistrationDate}
                                     onChange={(date) => setEndRegistrationDate(date)}
                                     dateFormat="dd/MM/yyyy"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white w-full"
                                     required
                                 />
                             </div>
@@ -198,7 +206,7 @@ const MyMarathonList = () => {
                                     selected={marathonStartDate}
                                     onChange={(date) => setMarathonStartDate(date)}
                                     dateFormat="dd/MM/yyyy"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white w-full"
                                     required
                                 />
                             </div>
@@ -211,7 +219,7 @@ const MyMarathonList = () => {
                                     type="text"
                                     name="location"
                                     defaultValue={selectedMarathon.location}
-                                    className="input input-bordered"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                                     required
                                 />
                             </div>
@@ -223,7 +231,7 @@ const MyMarathonList = () => {
                                 <select
                                     name="runningDistance"
                                     defaultValue={selectedMarathon.runningDistance || "Select running distance"}
-                                    className="select select-ghost w-full"
+                                    className="select select-ghost bg-white text-black dark:bg-gray-800 dark:text-white"
                                 >
                                     <option disabled>Select running distance</option>
                                     <option>25k</option>
@@ -240,7 +248,7 @@ const MyMarathonList = () => {
                                     type="text"
                                     name="description"
                                     defaultValue={selectedMarathon.description}
-                                    className="input input-bordered"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                                     required
                                 />
                             </div>
@@ -253,25 +261,19 @@ const MyMarathonList = () => {
                                     type="url"
                                     name="marathonImage"
                                     defaultValue={selectedMarathon.marathonImage}
-                                    className="input input-bordered"
+                                    className="input input-bordered bg-white text-black dark:bg-gray-800 dark:text-white"
                                     required
                                 />
                             </div>
 
-                            <div className="form-control mt-6 space-y-3">
-                                <button className="btn btn-primary">Update Marathon</button>
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    onClick={() => setSelectedMarathon(null)}
-                                >
-                                    Cancel
-                                </button>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary w-max mx-auto">Update Marathon</button>
                             </div>
                         </form>
                     </div>
                 </div>
             )}
+
         </div>
     );
 };
